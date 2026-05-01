@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lagos State Civil Service Commission - Learning Management System">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CSC Lagos LMS — Civil Service Commission</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+  <!-- Source Protection: disable view-source shortcuts -->
+  <script>
+    (function(){
+      document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
+      document.addEventListener('keydown',function(e){
+        var b=e.key==='F12'||
+          (e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'||e.key==='K'))||
+          (e.ctrlKey&&(e.key==='u'||e.key==='U'||e.key==='s'||e.key==='S'||e.key==='p'||e.key==='P'))||
+          (e.metaKey&&e.altKey&&(e.key==='i'||e.key==='I'));
+        if(b){e.preventDefault();e.stopPropagation();return false;}
+      },true);
+      document.addEventListener('selectstart',function(e){
+        if(e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA')e.preventDefault();
+      });
+    })();
+  </script>
+</head>
+<body>
+  <!-- DevTools Warning Overlay -->
+  <div id="devtools-warn">
+    <h2>🔒 Access Restricted</h2>
+    <p>Developer Tools are not permitted on this platform.</p>
+    <p>Please close Developer Tools to continue.</p>
+  </div>
+
+  <!-- SPA Mount Point -->
+  <div id="app">
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#0d4a2a,#1a6b3c);color:#fff;flex-direction:column;gap:16px;">
+      <div style="font-size:3rem;">🏛️</div>
+      <p style="font-size:1rem;opacity:.8;">Loading LMS Platform…</p>
+    </div>
+  </div>
+
+  <!-- Load course content first, then application logic -->
+  <script src="js/content.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
