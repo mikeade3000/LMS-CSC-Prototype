@@ -2,7 +2,7 @@
 const LMS_CONTENT = {
   GL07_08: {
     title: "Grade Level 07 & 08",
-    subtitle: "Junior Executive Officers",
+    subtitle: "Junior & Executive Officers",
     glCodes: ["GL07","GL08"],
     color: "#1a6b3c",
     stages: {
@@ -441,7 +441,7 @@ const LMS_CONTENT = {
   },
   GL13_14: {
     title: "Grade Level 13 & 14",
-    subtitle: "Deputy Director Level",
+    subtitle: "Assistant Chief & Chief Level",
     glCodes: ["GL13","GL14"],
     color: "#0a3d22",
     stages: {
@@ -527,7 +527,7 @@ const LMS_CONTENT = {
   },
   GL15_16: {
     title: "Grade Level 15 & 16",
-    subtitle: "Director & Permanent Secretary Level",
+    subtitle: "Deputy Director & Director Level",
     glCodes: ["GL15","GL16"],
     color: "#061f10",
     stages: {
