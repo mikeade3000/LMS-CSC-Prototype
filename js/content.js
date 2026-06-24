@@ -613,7 +613,198 @@ const LMS_CONTENT = {
   }
 };
 
+  ,
+  GL06: {
+    title: "Grade Level 06",
+    subtitle: "Assistant Executive Officer",
+    glCodes: ["GL06"],
+    color: "#2d8653",
+    stages: {
+      1: {
+        title: "Foundations of Government & Public Service",
+        description: "Your first step into public service — understanding what government is, why it exists, and your place within it.",
+        icon: "🌱",
+        topics: [
+          {
+            id: "t1", title: "Understanding Government and the Public Sector",
+            readingTime: "10 min",
+            content: `
+              <h3>What is Government?</h3>
+              <p>Government is the system of institutions, laws, and people through which a state is organised and managed. In Nigeria, government exists at three tiers: the Federal Government, State Governments (such as Lagos State), and Local Government Areas (LGAs). Each tier has specific roles and responsibilities defined by the 1999 Constitution. As a civil servant, you are part of the State Government tier — specifically the Lagos State Government apparatus.</p>
+              <p>The reason government exists is to serve the people. Everything a civil servant does — processing a file, answering a phone call, recording data — ultimately connects to a citizen somewhere who needs a service, a permit, a record, or protection. This connection to the public good is what makes civil service work meaningful and important, no matter how junior the position.</p>
+              <h3>The Public Sector vs the Private Sector</h3>
+              <p>The public sector is funded by taxpayers' money and exists to provide services for the common good — roads, schools, health facilities, security, and administration. The private sector is funded by private investors and exists primarily to generate profit. As a public sector employee, your first loyalty is always to the public interest, not to personal gain. This is the most fundamental principle of public service, and it shapes every decision you will make in your career.</p>
+              <h3>Why Your Role Matters</h3>
+              <p>At Grade Level 06, you are an Assistant Executive Officer — the foundation of the civil service. Think of government as a building: the senior officers are the roof, but GL06 officers are the foundation. Without a solid foundation, no building can stand. Your role in processing files accurately, receiving documents properly, maintaining records carefully, and treating members of the public respectfully directly determines whether Lagos State Government delivers effective services to its citizens. Never underestimate the importance of your position.</p>
+            `
+          },
+          {
+            id: "t2", title: "The Lagos State Civil Service: Structure & Your Role",
+            readingTime: "12 min",
+            content: `
+              <h3>Lagos State at a Glance</h3>
+              <p>Lagos State is the commercial capital of Nigeria and one of the fastest-growing cities in Africa. With a population estimated at over 20 million people, Lagos State Government manages a vast array of public services across 20 Local Government Areas and 37 Local Council Development Areas (LCDAs). The Lagos State civil service is the machinery through which these services are delivered.</p>
+              <p>The civil service is organised into Ministries, Departments, and Agencies — commonly called MDAs. Each MDA has a specific mandate. For example, the Ministry of Education oversees schools; the Ministry of Health oversees hospitals and health centres; the Lagos State Water Corporation manages water supply. As a GL06 officer, you will be assigned to a specific MDA and work within its mandate.</p>
+              <h3>The Civil Service Hierarchy</h3>
+              <p>The civil service has a clear hierarchy from the most junior to the most senior positions. At the top are Permanent Secretaries and Directors-General who head MDAs. Below them are Directors, Deputy Directors, Assistant Directors, Principal Officers, Senior Executive Officers, Executive Officers, and Assistant Executive Officers (which is your position at GL06). Understanding where you sit helps you know to whom you report, whose instructions to follow, and how decisions move up and down the organisation.</p>
+              <h3>The Civil Service Commission</h3>
+              <p>Your employment in the Lagos State Civil Service is managed by the Civil Service Commission (CSC). The CSC is a constitutional body established under Section 197 of the 1999 Constitution. It is responsible for all matters relating to civil service personnel — recruitment, confirmation of appointments, promotions, transfers, and discipline. As a new officer, your appointment letter comes from the CSC, and any promotion you earn in the future will also be processed through the CSC. Get to know its role, because it directly affects your career.</p>
+            `
+          },
+          {
+            id: "t3", title: "Rights, Responsibilities & the Civil Service Code",
+            readingTime: "11 min",
+            content: `
+              <h3>Your Rights as a Civil Servant</h3>
+              <p>As a Lagos State civil servant, you have important rights that are protected by law and by the Public Service Rules (PSR). These include: the right to fair treatment without discrimination; the right to know the rules that govern your employment; the right to a safe and professional working environment; the right to due process if you are disciplined (including the right to respond to a query before any sanction is imposed); and the right to annual leave and sick leave as prescribed by the PSR.</p>
+              <h3>Your Responsibilities</h3>
+              <p>Rights come with corresponding responsibilities. As a GL06 officer, your responsibilities include: reporting to work on time and signing the attendance register; dressing appropriately in accordance with the public service dress code; treating all members of the public and your colleagues with respect and dignity; protecting government property and resources entrusted to your care; keeping government information confidential unless authorised to share it; and carrying out all lawful instructions given by your supervisor promptly and accurately.</p>
+              <h3>The Civil Service Code of Conduct</h3>
+              <p>The Code of Conduct for Public Officers is established by the Code of Conduct Bureau and Tribunal Act. Key provisions every GL06 officer must know include: you must not receive any bribe, gift, or gratification in connection with your official duties; you must not use government property (vehicles, computers, stationery, etc.) for private purposes; you must not engage in any business activity that conflicts with your official duties without written permission; and you must declare your assets as required by law. Violating the Code of Conduct can result in dismissal and criminal prosecution — no matter how junior your position.</p>
+            `
+          }
+        ],
+        quiz: {
+          passingScore: 70,
+          questions: [
+            { q: "Nigeria's three tiers of government are:", opts: ["Federal, State, and Local Government","Executive, Legislature, and Judiciary","National, Regional, and District","President, Governor, and Chairman"], ans: 0, exp: "Nigeria operates a three-tier federal system: the Federal Government, 36 State Governments (including Lagos), and 774 Local Government Areas." },
+            { q: "The public sector is primarily funded by:", opts: ["Private investors","Donations from NGOs","Taxpayers' money","International organisations"], ans: 2, exp: "The public sector is funded by taxes and other public revenues, and exists to provide services for the common good." },
+            { q: "What does MDA stand for in the Lagos State Civil Service?", opts: ["Ministries, Departments, and Agencies","Management, Development, and Administration","Ministerial Departmental Authority","Ministry of Development and Affairs"], ans: 0, exp: "MDA stands for Ministries, Departments, and Agencies — the operational units through which the government delivers services." },
+            { q: "The Civil Service Commission is established under which section of the Constitution?", opts: ["Section 153","Section 197","Section 240","Section 14"], ans: 1, exp: "Section 197 of the 1999 Constitution establishes State Civil Service Commissions, including the Lagos State CSC." },
+            { q: "At Grade Level 06, your official title is:", opts: ["Junior Executive Officer","Senior Clerical Officer","Assistant Executive Officer","Executive Assistant"], ans: 2, exp: "Grade Level 06 in the Nigerian Civil Service is the Assistant Executive Officer — the foundation of the administrative cadre." },
+            { q: "The primary loyalty of a civil servant is to:", opts: ["Their supervisor","The political party in power","The public interest","Their MDA's revenue targets"], ans: 2, exp: "The most fundamental principle of public service is that civil servants serve the public interest above all other loyalties." },
+            { q: "Accepting a gift in connection with your official duties as a civil servant is:", opts: ["Acceptable if the gift is small","A serious violation of the Code of Conduct","Only acceptable from colleagues","Fine with verbal supervisor approval"], ans: 1, exp: "The Code of Conduct for Public Officers prohibits receiving any bribe, gift, or gratification in connection with official duties — regardless of the amount." },
+            { q: "If you are issued a query (disciplinary charge), you have the right to:", opts: ["Ignore it if you believe you are innocent","Respond in writing before any sanction is imposed","Appeal directly to the Governor","Immediately resign to avoid punishment"], ans: 1, exp: "Due process requires that any civil servant issued a query must be given the right to respond in writing before any sanction is imposed." },
+            { q: "Using a government vehicle for private purposes (without authorisation) is:", opts: ["Acceptable if you return it on time","A violation of the Code of Conduct","Only an issue if fuel is not replaced","Permitted for GL06 officers"], ans: 1, exp: "Government property — including vehicles, computers, and stationery — must not be used for private purposes. This violates the Code of Conduct." },
+            { q: "The PSR stands for:", opts: ["Public Service Regulations","Public Service Rules","Personnel Service Register","Public Sector Responsibilities"], ans: 1, exp: "PSR stands for Public Service Rules — the primary document governing the conduct, rights, and responsibilities of all civil servants." }
+          ]
+        }
+      },
+      2: {
+        title: "Office Skills & Administrative Foundations",
+        description: "Core practical skills for day-to-day office operations: communication, filing, and professional workplace conduct.",
+        icon: "💼",
+        topics: [
+          {
+            id: "t1", title: "Professional Conduct & Workplace Etiquette",
+            readingTime: "10 min",
+            content: `
+              <h3>First Impressions in the Workplace</h3>
+              <p>Your professional conduct at work shapes how your supervisors, colleagues, and members of the public perceive both you personally and the government you represent. The way you dress, speak, greet people, and carry yourself are all forms of communication. As a GL06 officer, you are often the first government official that a member of the public encounters — make that encounter a positive one.</p>
+              <p>The government dress code requires neat, modest, and professional attire. Avoid extreme styles, excessive jewellery, or anything that may be considered disrespectful or distracting in a professional environment. Your appearance communicates your commitment to your role. When in doubt, dress conservatively and professionally.</p>
+              <h3>Workplace Relationships</h3>
+              <p>Building respectful, professional relationships with your colleagues is essential for a productive work environment. Address your supervisors by their appropriate titles (Mr, Mrs, Dr, Director, etc.). Greet colleagues warmly but professionally. Avoid office gossip, which damages working relationships and your own reputation. If you have a disagreement with a colleague, address it privately and professionally — never in front of the public or in a group setting. Maintain boundaries between personal and professional relationships at work.</p>
+              <h3>Attendance, Punctuality & Conduct</h3>
+              <p>Punctuality is one of the most visible demonstrations of your professionalism and commitment. Always arrive at least 5 minutes before the official resumption time. Sign the attendance register as required. If you must be absent, notify your supervisor as early as possible and follow the prescribed leave procedure. While at work, remain focused on your official duties. Avoid spending work time on personal phone calls, social media, or personal errands. Use break times for personal activities. Remember: every hour you are paid for is a public resource — use it in service of the public.</p>
+            `
+          },
+          {
+            id: "t2", title: "Basic Official Communication: Notes, Messages & Correspondence",
+            readingTime: "12 min",
+            content: `
+              <h3>The Importance of Official Communication</h3>
+              <p>Almost everything in government is communicated in writing. Written communication creates a record, enables accountability, and ensures that decisions and instructions are not misunderstood. As a GL06 officer, you will frequently receive, process, and sometimes prepare basic written communications. It is essential that you do this accurately and professionally.</p>
+              <p>Official written communications in the civil service include: Memos (for internal communications between officers or offices within the same MDA), Official Letters (for external communications to individuals, companies, or other organisations), Circulars (for broadcasting the same message to multiple recipients simultaneously), and Minutes of Meetings (a formal record of what was discussed and decided in a meeting).</p>
+              <h3>Receiving and Processing Official Documents</h3>
+              <p>When an official document arrives at your office, follow this standard process: First, acknowledge receipt by stamping the document with the date and time of receipt. Second, assign or note the reference number. Third, record the document in the incoming correspondence register (noting the date, sender, reference number, and subject). Fourth, route the document to the correct officer or file according to your supervisor's instructions. Never leave official documents unsecured or unattended. Never accept or process unofficial correspondence on government letterhead.</p>
+              <h3>Writing Basic Notes and Messages</h3>
+              <p>When your supervisor asks you to prepare a note or short internal message, always include: the date; who the note is FROM and TO; a clear SUBJECT line; the body of the message (brief, clear, and factual); and your name and designation at the bottom. Use simple, clear English. Avoid slang, abbreviations, or informal language in official communications. Always proofread before submitting. A poorly written note reflects poorly on you and your office — take care with every document you produce.</p>
+            `
+          },
+          {
+            id: "t3", title: "Filing, Records & Managing Government Property",
+            readingTime: "10 min",
+            content: `
+              <h3>Why Filing Matters</h3>
+              <p>Government files are not just pieces of paper — they are the institutional memory of the state. A contract dispute may depend on a document filed five years ago. A citizen's rights may rest on a record you file today. Proper filing ensures that information can be found when needed, that accountability is maintained, and that the government's work is traceable and auditable. Careless or incorrect filing has caused government to lose court cases, pay out wrongful claims, and suffer significant reputational damage.</p>
+              <h3>The Basic Filing System</h3>
+              <p>Most Lagos State MDAs use a subject-based classification system. Each file has a unique reference number that identifies the MDA, the subject category, and the sequence number. Every document placed on a file must be dated, stamped, and arranged in chronological order (most recent on top). Always use the correct file — never place a document on the wrong file, even temporarily. When you move a file from one location to another, record the movement in the file movement register (noting the date, who took it, where it went, and when it was returned). Never take a file out of the office without authorisation.</p>
+              <h3>Government Property: Your Responsibility</h3>
+              <p>Government property assigned to your workstation — including computers, printers, phones, stationery, furniture, and any other equipment — is held in trust by you on behalf of the Lagos State Government and its citizens. You are personally accountable for items assigned to you. Do not use government property for personal purposes. Do not allow unauthorised persons to use government equipment. Report any damage, loss, or malfunction to the appropriate officer immediately. At the end of each working day, secure your workstation: lock up sensitive files, switch off equipment, and ensure the office is properly secured. Negligence with government property is a disciplinary offence.</p>
+            `
+          }
+        ],
+        quiz: {
+          passingScore: 70,
+          questions: [
+            { q: "When an official document arrives at your office, the FIRST thing you should do is:", opts: ["Read the content carefully","Stamp it with the date and time of receipt","Send it to the Permanent Secretary","File it immediately"], ans: 1, exp: "The first step in processing incoming official documents is to acknowledge receipt by stamping the date and time on it — this creates a verifiable record of arrival." },
+            { q: "A Circular is used for:", opts: ["Internal communication between two officers","External communication to one organisation","Broadcasting the same message to multiple recipients simultaneously","Formal communication to the Governor"], ans: 2, exp: "Circulars are used to broadcast the same message to multiple recipients at the same time — for example, announcing a new policy to all MDA heads." },
+            { q: "The incoming correspondence register records:", opts: ["Only letters from the Governor","Date, sender, reference number, and subject of received documents","Only documents addressed to the Permanent Secretary","Outgoing letters only"], ans: 1, exp: "The incoming correspondence register must record the date of receipt, sender's details, document reference number, and subject matter for every document received." },
+            { q: "Files in the civil service should be arranged in:", opts: ["Alphabetical order by author","Random order for flexibility","Chronological order with the most recent on top","Order of importance"], ans: 2, exp: "Official files are arranged in chronological order with the most recent document on top — this makes it easy to find the latest information quickly." },
+            { q: "When you need to take a file from one location to another, you must:", opts: ["Ask a colleague to record it for you later","Record the movement in the file movement register","Inform the Permanent Secretary by email","Simply carry it and return it quickly"], ans: 1, exp: "Any movement of a file must be recorded in the file movement register — noting date, who moved it, destination, and return date. This maintains file accountability." },
+            { q: "Using formal, professional language in official communications is important because:", opts: ["Informal language is not understood by most people","Official documents create records and reflect on the professionalism of government","Supervisors prefer formal writing styles","It is required by international law"], ans: 1, exp: "Official communications are formal records of government actions. Using professional language ensures clarity, accountability, and maintains the credibility of the institution." },
+            { q: "You notice a government computer assigned to your office is malfunctioning. You should:", opts: ["Continue using it and hope it gets better","Report the malfunction to the appropriate officer immediately","Take it home to fix it yourself","Ask a colleague to fix it informally"], ans: 1, exp: "Any damage, loss, or malfunction of government property must be reported immediately to the appropriate officer — this is your legal and professional obligation." },
+            { q: "At the end of each working day, you should:", opts:["Leave files on your desk for easy access in the morning","Secure your workstation, lock files, switch off equipment","Leave the computer running for overnight updates","Hand your files to a colleague to secure"], ans: 1, exp: "Every officer must secure their workstation at end of day: lock sensitive files, switch off equipment, and ensure the office is properly secured." },
+            { q: "Receiving a gift from a member of the public you helped process a document for is:", opts: ["Acceptable if you didn't ask for it","A violation of the Code of Conduct regardless of whether you asked","Acceptable if it is food","Only a problem if the gift is valuable"], ans: 1, exp: "Accepting any gift in connection with official duties violates the Code of Conduct — regardless of the value, who initiated it, or the circumstances." },
+            { q: "Your dress code as a civil servant should be:", opts: ["Trendy and fashionable to project a modern image","Casual on Fridays","Neat, modest, and professionally appropriate","As casual as you prefer — only performance matters"], ans: 2, exp: "Civil servants represent the government in public. The dress code requires neat, modest, and professional attire at all times during working hours." }
+          ]
+        }
+      },
+      3: {
+        title: "Personal Effectiveness & Service Excellence",
+        description: "Building the habits, skills, and attitudes that will sustain a successful civil service career and deliver excellent service to citizens.",
+        icon: "⭐",
+        topics: [
+          {
+            id: "t1", title: "Work Habits, Punctuality & Time Management",
+            readingTime: "10 min",
+            content: `
+              <h3>The Foundation: Good Work Habits</h3>
+              <p>Your habits — the things you do consistently, automatically, without needing to think about them — determine your effectiveness as a civil servant far more than your talent or your qualifications. A brilliant officer with poor habits will consistently underperform; a modest officer with excellent habits will consistently deliver results. The good news is that habits can be built deliberately. Starting now, at GL06, is the best time to establish the work habits that will carry you through a successful career.</p>
+              <p>The most important work habits for a GL06 officer include: arriving on time, every day; organising your workstation before starting work; completing assigned tasks before moving to new ones; keeping a task list and checking off items as they are completed; not leaving work unfinished unless directed; and cleaning up and securing your workstation at the end of each day. These seem simple — but consistent practice of these habits separates reliable officers from unreliable ones.</p>
+              <h3>Time Management at the Entry Level</h3>
+              <p>At GL06, you are unlikely to be managing your own schedule — your work is assigned to you by supervisors. However, managing your time effectively within your assignments is still your responsibility. When you receive an assignment, make sure you understand: what exactly is required; by when it is needed; and what the quality standard is. If you are unsure about any of these, ask before you start — it is far better to ask one question upfront than to redo the work because you misunderstood. Prioritise urgent assignments and communicate early if you think you may not finish on time.</p>
+              <h3>Dealing with Difficult Days</h3>
+              <p>Every civil servant has difficult days — heavy workloads, difficult members of the public, unsupportive colleagues, or personal challenges. How you handle difficult days reveals your professionalism. On difficult days: maintain your composure and continue to treat others professionally; if the workload is genuinely unmanageable, communicate this to your supervisor rather than silently failing; take your breaks as prescribed to recharge; and remember that your professional conduct must be consistent regardless of how you feel personally. The public deserves your best service on your worst days just as much as on your best.</p>
+            `
+          },
+          {
+            id: "t2", title: "Basic Record-Keeping & Numerical Skills",
+            readingTime: "11 min",
+            content: `
+              <h3>Why Accuracy in Records Matters</h3>
+              <p>In government, accurate records are not optional — they are essential. An incorrectly recorded date on a certificate can deprive a citizen of their rights. A wrong figure in a register can trigger a financial discrepancy that takes months to resolve. A missing record in a file can cause a government case to be lost in court. As a GL06 officer, you will regularly be required to write in registers, fill forms, copy data, and maintain logs. In all of these activities, accuracy is your most important obligation. Always double-check what you have written before closing a register or submitting a form.</p>
+              <h3>Basic Numerical Skills for Government Work</h3>
+              <p>Even at GL06, you will encounter numbers in your daily work — counting documents, recording quantities of items received or dispatched, calculating leave days, or tallying attendance records. You do not need advanced mathematics, but you do need to be comfortable with: counting and recording accurately; simple addition and subtraction; cross-checking totals (for example, checking that the number of documents received matches the number recorded in the register); and recognising when a number seems wrong (for example, if a store records 1,000 items received but only 100 were delivered, you should flag the discrepancy rather than simply recording what you are told).</p>
+              <h3>Maintaining Common Government Registers</h3>
+              <p>Several key registers are maintained at the GL06 level: the Attendance Register (recording who arrived, at what time, and who was absent each day); the Incoming and Outgoing Correspondence Registers (recording all documents received and sent); the File Movement Register (tracking the movement of physical files); and the Visitors' Register (recording all visitors to the office, their purpose, time in, and time out). Each register must be maintained neatly, in ink (never pencil), with no erasures (errors should be crossed out with a single line and initialled, not erased or covered with correction fluid). Registers are official government records and may be called up in audit or legal proceedings.</p>
+            `
+          },
+          {
+            id: "t3", title: "Serving the Public: Courtesy, Respect & Customer Service",
+            readingTime: "10 min",
+            content: `
+              <h3>Citizens Are Your Customers</h3>
+              <p>The citizens of Lagos State are not doing you a favour by coming to your office — they are exercising their right to access government services that their taxes fund. And you are not doing them a favour by serving them — you are performing your constitutional and professional duty. This mutual respect — citizens respecting government processes, civil servants respecting citizens' rights — is the foundation of good governance. When a member of the public comes to your office, they deserve courteous, efficient, and dignified treatment regardless of their appearance, education level, or social status.</p>
+              <h3>Practical Public Service Skills</h3>
+              <p>When interacting with members of the public: greet them warmly and professionally; listen carefully to understand what they need before speaking; if you cannot help them, direct them clearly to the right person or department rather than simply saying "I don't know"; if there will be a delay in processing their request, inform them proactively about the timeline; never ask for money, gifts, or any form of gratification to process a document; and never be rude, dismissive, or impatient — even with difficult or frustrated visitors. Public frustration is often the result of systemic problems beyond that person's control, not a personal attack on you.</p>
+              <h3>Handling Complaints Professionally</h3>
+              <p>You will sometimes face citizens who are angry, frustrated, or who feel they have been mistreated by government. The way you handle these situations demonstrates your professionalism. First, listen without interrupting. Second, acknowledge their frustration ("I understand this has been difficult for you"). Third, focus on what you CAN do, not what you cannot. Fourth, if the matter is beyond your authority, escalate it to your supervisor clearly and promptly — do not leave the citizen without a path forward. Fifth, never argue with a member of the public in a loud, public, or confrontational manner. A calm, respectful civil servant can de-escalate almost any situation.</p>
+            `
+          }
+        ],
+        quiz: {
+          passingScore: 70,
+          questions: [
+            { q: "When you receive an assignment from your supervisor, the first thing you should do is:", opts: ["Begin work immediately without asking questions","Ensure you understand what is required, by when, and to what standard","Ask a colleague to help you","Wait until you feel ready to start"], ans: 1, exp: "Before starting any assignment, confirm what is required, when it is needed, and the quality expected. Asking upfront prevents wasted effort from misunderstandings." },
+            { q: "Government registers must be written in:", opts: ["Pencil for easy correction","Permanent ink — errors crossed out with a single line and initialled","Pencil or pen, either is acceptable","Red ink for official records"], ans: 1, exp: "Official registers are permanent records and must be written in permanent ink. Errors should be crossed out with a single line and initialled — never erased or covered with correction fluid." },
+            { q: "If a workload is genuinely more than you can manage, you should:", opts: ["Work overtime without informing anyone","Stay silent and do your best","Communicate the situation to your supervisor proactively","Ask colleagues to cover your duties informally"], ans: 2, exp: "When workload is genuinely unmanageable, communicate proactively with your supervisor rather than silently failing. This allows the supervisor to reassign, prioritise, or provide support." },
+            { q: "Citizens who come to your office deserve:", opts: ["Service based on their appearance and status","Courteous and dignified treatment regardless of their background","Priority service if they are politically connected","Basic service only — they should be grateful for any help"], ans: 1, exp: "Every citizen deserves courteous, efficient, and dignified service regardless of appearance, education, or social status. This is a constitutional obligation, not a favour." },
+            { q: "If you notice a numerical discrepancy in a register (e.g., items received don't match what's recorded), you should:", opts: ["Simply record what you are told to record","Flag the discrepancy to your supervisor before recording","Correct the number to what seems right","Ignore it — discrepancies are normal"], ans: 1, exp: "Numerical discrepancies in government records must be flagged before recording — entering incorrect figures, even if instructed to, can implicate you in financial irregularities." },
+            { q: "When a member of the public is angry and frustrated at your office, you should:", opts: ["Match their energy and be firm","Listen calmly, acknowledge their frustration, and focus on what you can do","Ask them to leave if they are disruptive","Refer them to a supervisor without listening to them first"], ans: 1, exp: "A calm, respectful response to frustrated citizens de-escalates situations. Listen, acknowledge, and focus on solutions — never argue confrontationally in public." },
+            { q: "The Visitors' Register records:", opts: ["Only visits from senior government officials","All visitors, their purpose, time in, and time out","Names of visitors only","Visits from members of the public only"], ans: 1, exp: "The Visitors' Register is a security and accountability tool. It records all visitors — their name, purpose of visit, time of arrival, and time of departure." },
+            { q: "If you cannot help a member of the public with their request, you should:", opts:["Tell them you don't know and end the interaction","Direct them clearly to the right person or department","Ask them to come back another day","Record their complaint and take no further action"], ans: 1, exp: "When you cannot directly help, clearly direct the person to the right person, office, or department. Never leave a citizen without a clear path forward." },
+            { q: "Good work habits established early in your career are important because:", opts: ["They help you avoid working hard","They determine your long-term effectiveness more than talent alone","They allow you to get promoted faster by appearing busy","They are required only until confirmation of appointment"], ans: 1, exp: "Habits — things done consistently and automatically — determine long-term effectiveness. Good habits established at GL06 form the foundation of a successful career." },
+            { q: "When your supervisor gives you a deadline for a task and you realise you cannot meet it, you should:", opts: ["Miss the deadline and explain afterwards","Communicate early that you may not meet the deadline and give reasons","Ask a colleague to submit work under your name","Simply do your best and say nothing"], ans: 1, exp: "Early communication about potential deadline issues allows your supervisor to plan around it. Silent failure is worse than honest, timely communication about challenges." }
+          ]
+        }
+      }
+    }
+  }
+};
+
 const GL_MAP = {
+  GL06: "GL06",
   GL07: "GL07_08", GL08: "GL07_08",
   GL09: "GL09_10", GL10: "GL09_10",
   GL12: "GL12",
@@ -621,4 +812,4 @@ const GL_MAP = {
   GL15: "GL15_16", GL16: "GL15_16"
 };
 
-const GRADE_LEVELS = ["GL07","GL08","GL09","GL10","GL12","GL13","GL14","GL15","GL16"];
+const GRADE_LEVELS = ["GL06","GL07","GL08","GL09","GL10","GL12","GL13","GL14","GL15","GL16"];

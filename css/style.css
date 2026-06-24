@@ -341,3 +341,151 @@ img{max-width:100%;user-select:none;}
   .nav-links{gap:8px;}
   .btn-primary,.btn-outline,.btn-gold{padding:8px 14px;font-size:.85rem;}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   v2.0 ADDITIONS — GL06, TTS, Sheets Sync, UI Improvements
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Toast Notifications ── */
+#toast-container{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none;}
+.toast{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.15);border-left:4px solid var(--green);font-size:.88rem;max-width:340px;opacity:0;transform:translateX(30px);transition:all .35s cubic-bezier(.22,1,.36,1);pointer-events:auto;}
+.toast.show{opacity:1;transform:none;}
+.toast-success{border-left-color:var(--green-pass);}
+.toast-error{border-left-color:var(--red);}
+.toast-warn{border-left-color:var(--gold);}
+.toast-icon{font-size:1rem;flex-shrink:0;}
+
+/* ── Sync Dot ── */
+.sync-dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.sync-dot.ok{background:#27ae60;}
+.sync-dot.warn{background:var(--gold);animation:pulse-dot .8s ease-in-out infinite;}
+.sync-dot.off{background:rgba(255,255,255,.25);}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* ── Auth Card improvements ── */
+.auth-header-band{height:6px;background:linear-gradient(90deg,var(--green-dark),var(--green),var(--gold));border-radius:18px 18px 0 0;}
+.auth-body{padding:32px 36px 36px;}
+
+/* ── Dashboard improvements ── */
+.dash-header{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 100%);}
+.dash-header-left{flex:1;}
+.dash-greet{font-size:.85rem;color:rgba(255,255,255,.65);font-weight:500;margin-bottom:2px;}
+.dash-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.dash-tag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);padding:3px 10px;border-radius:12px;font-size:.75rem;font-weight:600;}
+.dash-tag.gold{background:rgba(201,146,42,.4);}
+
+/* ── Stage card improvements ── */
+.stage-left{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:2px;}
+.stage-icon-wrap{width:46px;height:46px;border-radius:12px;background:var(--grey-1);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.stage-card.stage-done .stage-icon-wrap{background:rgba(39,174,96,.1);}
+.stage-card.stage-active .stage-icon-wrap{background:rgba(201,146,42,.1);}
+.stage-meta{font-size:.72rem;color:var(--grey-4);text-transform:uppercase;font-weight:700;letter-spacing:.5px;}
+.stage-footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px;}
+.stage-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:600;}
+.stage-badge.done{background:rgba(39,174,96,.1);color:var(--green-pass);}
+.stage-badge.progress{background:rgba(201,146,42,.1);color:var(--gold);}
+.stage-badge.locked{background:var(--grey-1);color:var(--grey-3);}
+.stage-score{font-size:.78rem;color:var(--text-light);}
+.stage-date{font-size:.72rem;color:var(--grey-4);}
+
+/* ── TTS Bar ── */
+.tts-bar{background:var(--green-light);border:1px solid rgba(26,107,60,.2);border-radius:10px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+.tts-left{display:flex;align-items:center;gap:10px;}
+.tts-label{font-size:.82rem;font-weight:700;color:var(--green-dark);}
+.tts-status{font-size:.78rem;color:var(--green);padding:2px 8px;background:rgba(26,107,60,.1);border-radius:10px;}
+.tts-controls{display:flex;align-items:center;gap:8px;}
+.btn-tts{background:var(--green);color:#fff;border:none;padding:7px 14px;border-radius:7px;font-size:.82rem;font-weight:600;cursor:pointer;transition:.2s;}
+.btn-tts:hover{background:var(--green-dark);}
+.btn-tts.active{background:var(--gold);}
+.btn-tts-sm{background:transparent;color:var(--grey-4);border:1px solid var(--grey-2);padding:6px 10px;border-radius:7px;font-size:.8rem;cursor:pointer;transition:.2s;}
+.btn-tts-sm:hover{background:var(--grey-1);color:var(--text);}
+.tts-rate{border:1px solid var(--grey-2);border-radius:7px;padding:6px 8px;font-size:.8rem;background:#fff;color:var(--text);cursor:pointer;outline:none;}
+.tts-rate:focus{border-color:var(--green);}
+
+/* ── Sidebar separator ── */
+.sidebar-sep{height:1px;background:var(--grey-2);margin:12px 0;}
+.mt8{margin-top:8px;}
+
+/* ── Admin improvements ── */
+.admin-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:4px;}
+.admin-hero-actions{display:flex;gap:8px;flex-shrink:0;}
+.stat-card.green .stat-num{color:var(--green-pass);}
+.stat-card.gold{border-top-color:var(--gold);}
+.stat-card.gold .stat-num{color:var(--gold);}
+.stat-card.warn{border-top-color:var(--red);}
+.stat-card.warn .stat-num{color:var(--red);}
+.mini-bar{height:6px;background:var(--grey-2);border-radius:3px;overflow:hidden;width:80px;}
+.mini-bar div{height:100%;background:var(--green);border-radius:3px;}
+.empty-row{text-align:center;color:var(--grey-4);padding:20px!important;}
+.muted{color:var(--grey-4);}
+
+/* ── Google Sheets Config ── */
+.sheets-config{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;}
+.sheets-input{flex:1;min-width:200px;padding:9px 12px;border:1.5px solid var(--grey-2);border-radius:8px;font-size:.88rem;font-family:var(--font);outline:none;}
+.sheets-input:focus{border-color:var(--green);}
+.sheets-help{font-size:.8rem;color:var(--grey-4);margin-top:4px;}
+.sheets-help code{background:var(--grey-1);padding:1px 5px;border-radius:4px;font-size:.78rem;}
+.badge-on{display:inline-block;background:rgba(39,174,96,.1);color:var(--green-pass);padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:700;margin-left:8px;}
+.badge-off{display:inline-block;background:var(--grey-1);color:var(--grey-4);padding:2px 8px;border-radius:10px;font-size:.75rem;font-weight:700;margin-left:8px;}
+.warn-btn{background:rgba(192,57,43,.1);color:var(--red);border:1px solid rgba(192,57,43,.2);padding:5px 12px;border-radius:6px;font-size:.8rem;cursor:pointer;font-weight:600;}
+.warn-btn:hover{background:rgba(192,57,43,.2);}
+
+/* ── Certificate v2 ── */
+.cert-outer{background:#fff;border-radius:16px;padding:6px;box-shadow:0 8px 40px rgba(0,0,0,.15);position:relative;}
+.cert-corner{position:absolute;width:32px;height:32px;border-color:var(--gold);border-style:solid;}
+.cert-corner-tl{top:12px;left:12px;border-width:3px 0 0 3px;border-radius:4px 0 0 0;}
+.cert-corner-tr{top:12px;right:12px;border-width:3px 3px 0 0;border-radius:0 4px 0 0;}
+.cert-corner-bl{bottom:12px;left:12px;border-width:0 0 3px 3px;border-radius:0 0 0 4px;}
+.cert-corner-br{bottom:12px;right:12px;border-width:0 3px 3px 0;border-radius:0 0 4px 0;}
+.cert-inner{background:linear-gradient(180deg,#fefffe 0%,#f8fcf9 100%);border-radius:12px;padding:44px 52px;position:relative;overflow:hidden;}
+.cert-inner::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(201,146,42,.06),transparent 70%);}
+.cert-emblem-ring{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 4px 16px rgba(26,107,60,.3);}
+.cert-emblem{font-size:2rem;}
+.cert-logos{text-align:center;}
+.cert-govt-name{font-size:.9rem;letter-spacing:3px;text-transform:uppercase;color:var(--green-dark);font-weight:700;text-align:center;margin-bottom:2px;}
+.cert-body-org{font-size:1.1rem;font-weight:800;color:var(--green-dark);letter-spacing:.5px;text-align:center;}
+.cert-dept{font-size:.75rem;color:var(--grey-4);text-align:center;margin-top:2px;letter-spacing:1px;}
+.cert-ribbon-bar{height:3px;background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--green) 70%,transparent 100%);margin:18px 0;border-radius:2px;}
+.cert-doc-type{text-align:center;font-size:1.8rem;font-weight:800;color:var(--green);letter-spacing:.5px;margin-bottom:4px;}
+.cert-stage-tag{text-align:center;font-size:.78rem;color:var(--gold);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;}
+.cert-preamble{text-align:center;font-size:.88rem;color:var(--grey-4);font-style:italic;margin-bottom:6px;}
+.cert-name{text-align:center;font-size:1.9rem;font-weight:800;color:var(--green-dark);font-style:italic;border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:8px;}
+.cert-designation{text-align:center;font-size:.82rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:18px;}
+.cert-body-text{text-align:center;color:var(--text-light);font-size:.9rem;line-height:1.8;max-width:560px;margin:0 auto 14px;}
+.cert-award-line,.cert-id-line{text-align:center;font-size:.82rem;color:var(--text-light);margin-bottom:4px;}
+.cert-id-code{font-family:monospace;color:var(--grey-4);font-size:.78rem;}
+.cert-sigs{display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:16px;}
+.cert-seal{flex-shrink:0;}
+.seal-ring{width:80px;height:80px;border-radius:50%;border:3px solid var(--green);display:flex;align-items:center;justify-content:center;background:rgba(26,107,60,.05);}
+.seal-inner{text-align:center;font-size:.6rem;font-weight:800;color:var(--green);letter-spacing:1px;line-height:1.4;}
+.sig-block{text-align:center;flex:1;}
+.sig-graphic{color:var(--grey-4);font-size:.9rem;margin-bottom:6px;letter-spacing:2px;}
+.sig-name{font-weight:700;font-size:.82rem;color:var(--text);}
+.sig-title{font-size:.72rem;color:var(--grey-4);margin-top:1px;}
+
+/* ── Report improvements ── */
+.report-actions{margin-left:auto;flex-shrink:0;}
+.report-info{flex:1;}
+
+/* ── Print ── */
+@media print{
+  .no-print,.navbar,.cert-actions,#toast-container{display:none!important;}
+  .main-content{padding:0;max-width:100%;}
+  .cert-outer{box-shadow:none!important;}
+  body{background:#fff;}
+  .cert-inner{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+
+/* ── Responsive updates ── */
+@media(max-width:768px){
+  .auth-body{padding:24px 20px 28px;}
+  .tts-bar{flex-direction:column;align-items:flex-start;}
+  .cert-inner{padding:28px 20px;}
+  .cert-sigs{flex-direction:column;align-items:center;gap:14px;}
+  .cert-name{font-size:1.4rem;}
+  .cert-doc-type{font-size:1.3rem;}
+  .sheets-config{flex-direction:column;}
+  .admin-hero{flex-direction:column;}
+  .report-header{flex-wrap:wrap;}
+  .report-actions{width:100%;}
+}
