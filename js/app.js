@@ -366,7 +366,7 @@ function renderRegister(){
           <div class="reg-row">
             <div class="form-group">
               <label>Full Name <span class="req">*</span></label>
-              <input type="text" id="r_name" placeholder="e.g. Adaeze Okonkwo"
+              <input type="text" id="r_name" placeholder="e.g. Michael Adelani Adewusi"
                 autocomplete="name" required minlength="2">
             </div>
             <div class="form-group">
