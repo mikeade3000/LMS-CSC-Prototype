@@ -232,22 +232,48 @@ const Prog={
 
 // ── Router ────────────────────────────────────────────────────────────────────
 const routes={
-  '':()=>guard(renderDashboard),'/':()=>guard(renderDashboard),
-  '/login':renderLogin,'/register':renderRegister,
+  '':()=>guard(renderDashboard),
+  '/':()=>guard(renderDashboard),
+  '/login':()=>safeRender(renderLogin),
+  '/register':()=>safeRender(renderRegister),
   '/dashboard':()=>guard(renderDashboard),
-  '/learn':()=>guard(renderLearn),'/quiz':()=>guard(renderQuiz),
+  '/learn':()=>guard(renderLearn),
+  '/quiz':()=>guard(renderQuiz),
   '/cert':()=>guard(renderCert),
-  '/admin':()=>guard(renderAdmin,true),'/admin/user':()=>guard(renderUserReport,true)
+  '/admin':()=>guard(renderAdmin,true),
+  '/admin/user':()=>guard(renderUserReport,true)
 };
+
+// safeRender: wraps any view function in error handling so a JS error
+// never silently leaves the previous page on screen
+function safeRender(fn){
+  try{fn();}catch(e){
+    console.error('[CSC-LMS] Render error:',e);
+    app().innerHTML=`<div class="auth-page"><div class="auth-card">
+      <div class="auth-header-band"></div>
+      <div class="auth-body" style="text-align:center;padding:40px 24px">
+        <div style="font-size:2.5rem;margin-bottom:12px">⚠️</div>
+        <h2 style="color:#c0392b;margin-bottom:8px">Something went wrong</h2>
+        <p style="color:#666;font-size:.9rem;margin-bottom:20px">${e.message||'An unexpected error occurred. Please try again.'}</p>
+        <a href="#/login" class="btn-primary" style="display:inline-block;text-decoration:none">← Back to Login</a>
+      </div></div></div>`;
+  }
+}
+
 function guard(fn,adminOnly=false){
   const u=Auth.current();
   if(!u){location.hash='#/login';return;}
   if(adminOnly&&u.role!=='admin'){location.hash='#/dashboard';return;}
-  fn();
+  try{fn();}catch(e){console.error('[CSC-LMS] View error:',e);}
 }
 const getHash=()=>location.hash.replace('#','').split('?')[0]||'/';
 const getParams=()=>{const p={};(location.hash.split('?')[1]||'').split('&').forEach(x=>{const[k,v]=x.split('=');if(k)p[k]=decodeURIComponent(v||'');});return p;};
-function router(){const fn=routes[getHash()]||routes[''];fn&&fn();GSync.updateIndicator();}
+function router(){
+  const h=getHash();
+  const fn=routes[h];
+  if(fn){fn();}else{guard(renderDashboard);}
+  GSync.updateIndicator();
+}
 window.addEventListener('hashchange',()=>{TTS.stop();router();});
 
 // ── Shell ─────────────────────────────────────────────────────────────────────
@@ -320,58 +346,114 @@ window.doLogin=function(){
 
 // ── Register ──────────────────────────────────────────────────────────────────
 function renderRegister(){
-  const glOpts=GRADE_LEVELS.map(g=>`<option value="${g}">${g.replace('GL','Grade Level ')}</option>`).join('');
+  // Defensive: ensure GRADE_LEVELS is available
+  const levels = (typeof GRADE_LEVELS !== 'undefined' && Array.isArray(GRADE_LEVELS))
+    ? GRADE_LEVELS
+    : ["GL06","GL07","GL08","GL09","GL10","GL12","GL13","GL14","GL15","GL16"];
+
+  const glOpts = levels.map(g=>`<option value="${g}">${g.replace('GL','Grade Level ')}</option>`).join('');
+
   app().innerHTML=`
   <div class="auth-page">
-    <div class="auth-card">
+    <div class="auth-card reg-card">
       <div class="auth-header-band"></div>
       <div class="auth-body">
         <div class="auth-logo">🏛️</div>
         <h1 class="auth-title">Create Account</h1>
-        <p class="auth-subtitle">Lagos State Civil Service LMS</p>
-        <form class="auth-form" onsubmit="return false">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="r_name" placeholder="e.g. Adaeze Okonkwo" autocomplete="name" required>
+        <p class="auth-subtitle">Lagos State Civil Service Commission — LMS</p>
+
+        <form class="auth-form" onsubmit="return false" autocomplete="off">
+          <div class="reg-row">
+            <div class="form-group">
+              <label>Full Name <span class="req">*</span></label>
+              <input type="text" id="r_name" placeholder="e.g. Adaeze Okonkwo"
+                autocomplete="name" required minlength="2">
+            </div>
+            <div class="form-group">
+              <label>Grade Level <span class="req">*</span></label>
+              <select id="r_gl" required>
+                <option value="">-- Select --</option>
+                ${glOpts}
+              </select>
+            </div>
           </div>
+
           <div class="form-group">
-            <label>Official Email Address</label>
-            <input type="email" id="r_email" placeholder="your.email@domain.com" autocomplete="email" required>
+            <label>Official Email Address <span class="req">*</span></label>
+            <input type="email" id="r_email" placeholder="your.name@csc.lagos.gov.ng"
+              autocomplete="email" required>
           </div>
-          <div class="form-group">
-            <label>Grade Level</label>
-            <select id="r_gl" required>
-              <option value="">-- Select your Grade Level --</option>
-              ${glOpts}
-            </select>
+
+          <div class="reg-row">
+            <div class="form-group">
+              <label>Password <span class="req">*</span></label>
+              <div class="pw-wrap">
+                <input type="password" id="r_pw" placeholder="At least 6 characters"
+                  autocomplete="new-password" required minlength="6">
+                <button type="button" class="pw-toggle" onclick="togglePw('r_pw',this)"
+                  title="Show password">👁</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password <span class="req">*</span></label>
+              <div class="pw-wrap">
+                <input type="password" id="r_pw2" placeholder="Repeat password"
+                  autocomplete="new-password" required minlength="6">
+                <button type="button" class="pw-toggle" onclick="togglePw('r_pw2',this)"
+                  title="Show password">👁</button>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="r_pw" placeholder="At least 6 characters" autocomplete="new-password" required>
-          </div>
-          <div class="form-group">
-            <label>Confirm Password</label>
-            <input type="password" id="r_pw2" placeholder="Repeat your password" autocomplete="new-password" required>
-          </div>
+
           <div id="regErr" class="form-error" style="display:none"></div>
-          <button class="btn-primary full" onclick="doRegister()">Create My Account</button>
+
+          <div class="reg-terms">
+            <label class="terms-label">
+              <input type="checkbox" id="r_terms" required>
+              <span>I agree to use this platform in accordance with the
+              <strong>CSC Code of Conduct</strong></span>
+            </label>
+          </div>
+
+          <button class="btn-primary full" onclick="doRegister()">
+            Create My Account &rarr;
+          </button>
         </form>
-        <p class="auth-switch">Already registered? <a href="#/login">Sign In</a></p>
+
+        <p class="auth-switch">Already have an account?
+          <a href="#/login">Sign In</a>
+        </p>
       </div>
     </div>
   </div>`;
 }
+
+window.togglePw=function(id,btn){
+  const input=document.getElementById(id);
+  if(!input)return;
+  const show=input.type==='password';
+  input.type=show?'text':'password';
+  btn.textContent=show?'🙈':'👁';
+};
+
 window.doRegister=function(){
-  const name=document.getElementById('r_name').value;
-  const email=document.getElementById('r_email').value;
-  const gl=document.getElementById('r_gl').value;
-  const pw=document.getElementById('r_pw').value;
-  const pw2=document.getElementById('r_pw2').value;
+  const name=(document.getElementById('r_name')?.value||'').trim();
+  const email=(document.getElementById('r_email')?.value||'').trim();
+  const gl=document.getElementById('r_gl')?.value||'';
+  const pw=document.getElementById('r_pw')?.value||'';
+  const pw2=document.getElementById('r_pw2')?.value||'';
+  const terms=document.getElementById('r_terms')?.checked;
   const err=document.getElementById('regErr');
-  if(pw!==pw2){err.textContent='Passwords do not match.';err.style.display='block';return;}
+  const showErr=(msg)=>{if(err){err.textContent=msg;err.style.display='block';}};
+
+  if(!terms){showErr('Please accept the Code of Conduct to continue.');return;}
+  if(pw!==pw2){showErr('Passwords do not match. Please re-enter.');return;}
+  if(pw.length<6){showErr('Password must be at least 6 characters.');return;}
+
   const r=Auth.register(name,email,pw,gl);
-  if(!r.ok){err.textContent=r.msg;err.style.display='block';return;}
-  toast('Account created! Welcome to the CSC LMS.','success');
+  if(!r.ok){showErr(r.msg);return;}
+  if(err)err.style.display='none';
+  toast(`Welcome, ${name.split(' ')[0]}! Your account has been created.`,'success');
   setTimeout(()=>{location.hash='#/dashboard';},400);
 };
 
