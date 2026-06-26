@@ -129,13 +129,33 @@ const Auth={
   clearSession(){S.del('session');S.del('api_token');API.token='';},
 
   async login(email,password){
-    if(!API.isConfigured())return{ok:false,msg:'The LMS database is not yet configured. Please contact your administrator.'};
+    // BOOTSTRAP ADMIN: allow Super Admin to sign in offline so they can
+    // configure the database the very first time (before API is connected).
+    const BOOT_EMAIL='superadmin@csc.lagos.gov.ng';
+    const BOOT_PASS='CSC@Admin2024!';
+    if(email.toLowerCase().trim()===BOOT_EMAIL && password===BOOT_PASS){
+      // If API is configured, try the real login first (to get a server token)
+      if(API.isConfigured()){
+        try{
+          loadingShow('Signing you in…');
+          const r=await API.login(email,password);
+          if(r.ok){this.saveSession(r.user,r.token);return r;}
+        }catch(e){/* fall through to local bootstrap */}
+        finally{loadingHide();}
+      }
+      // Local bootstrap session (no server token — admin can now set up the DB)
+      const adminUser={userId:'admin001',id:'admin001',name:'Super Administrator',email:BOOT_EMAIL,gl:null,role:'admin'};
+      this.saveSession(adminUser,'');
+      return{ok:true,user:adminUser,bootstrap:true};
+    }
+
+    // All other users require the database
+    if(!API.isConfigured())return{ok:false,msg:'The LMS database is not yet configured. Please sign in as the Super Admin to set it up.'};
     try{
       loadingShow('Signing you in…');
       const r=await API.login(email,password);
       if(!r.ok)return r;
       this.saveSession(r.user,r.token);
-      // Pre-fetch and cache user's progress
       try{
         const pr=await API.getProgress();
         if(pr.ok)S.set('prog_'+r.user.userId,pr.progress);
@@ -282,7 +302,7 @@ function renderLogin(){
         <div class="auth-logo">🏛️</div>
         <h1 class="auth-title">Civil Service Commission</h1>
         <p class="auth-subtitle">Lagos State — Learning Management System</p>
-        ${!apiReady?`<div class="api-notice">⚙️ <strong>Database not configured.</strong> Please contact your administrator to set up the system.</div>`:''}
+        ${!apiReady?`<div class="api-notice">⚙️ <strong>Database not configured.</strong> The Super Administrator can sign in to set it up.</div>`:''}
         <form class="auth-form" onsubmit="return false">
           <div class="form-group">
             <label>Official Email Address</label>
@@ -298,7 +318,7 @@ function renderLogin(){
             </div>
           </div>
           <div id="loginErr" class="form-error" style="display:none"></div>
-          <button class="btn-primary full" onclick="doLogin()" ${!apiReady?'disabled style="opacity:.5;cursor:not-allowed"':''}>
+          <button class="btn-primary full" onclick="doLogin()">
             Sign In to LMS
           </button>
         </form>
@@ -753,9 +773,19 @@ async function renderAdmin(){
     }catch(e){toast('Could not reach database: '+e.message,'error',6000);}
   }else{
     renderShell(`<div class="admin-page">
+      <div class="admin-hero">
+        <div><h2>📊 Super Admin Dashboard</h2>
+        <p class="admin-sub">Welcome — let's connect your database</p></div>
+      </div>
       <div class="api-setup-banner">
-        <h2>⚙️ Database Not Configured</h2>
-        <p>Connect your Google Sheets database to see all officers across every device and browser.</p>
+        <h2>⚙️ One-Time Database Setup</h2>
+        <p>You're signed in as Super Administrator. To track all officers across <strong>every device and browser</strong>, connect your Google Sheets database below.</p>
+        <div class="setup-steps">
+          <div class="setup-step"><span class="step-n">1</span> Open a new Google Sheet → <strong>Extensions → Apps Script</strong></div>
+          <div class="setup-step"><span class="step-n">2</span> Paste the <code>backend.gs</code> file → Save</div>
+          <div class="setup-step"><span class="step-n">3</span> <strong>Deploy → New Deployment → Web App</strong> (Execute as: Me, Access: Anyone)</div>
+          <div class="setup-step"><span class="step-n">4</span> Copy the Web App URL and paste it below</div>
+        </div>
         ${renderApiSettings()}
       </div>
     </div>`);
@@ -887,11 +917,20 @@ window.saveApiUrl=async function(){
   toast('Testing connection…','info',2000);
   try{
     const r=await API.ping();
-    if(r.ok!==false){toast('✅ Google Sheets database connected!','success',4000);}
-    else{toast('Connected but unexpected response. Check your Apps Script.','warn',5000);}
+    if(r.ok!==false){
+      toast('✅ Google Sheets database connected!','success',4000);
+      // If the admin is on a bootstrap (offline) session with no server token,
+      // silently re-authenticate to obtain a real token so admin API calls work.
+      if(!API.token){
+        try{
+          const lr=await API.login('superadmin@csc.lagos.gov.ng','CSC@Admin2024!');
+          if(lr.ok){Auth.saveSession(lr.user,lr.token);toast('Admin session upgraded — you can now manage all officers.','success',4000);}
+        }catch(e){/* the sheet may have a different admin password; non-fatal */}
+      }
+    }else{toast('Connected but unexpected response. Check your Apps Script.','warn',5000);}
   }catch(e){toast('❌ Could not reach URL. Ensure it is deployed as "Anyone" access.','error',6000);}
   updateNavStatus();
-  setTimeout(()=>renderAdmin(),1000);
+  setTimeout(()=>renderAdmin(),1200);
 };
 window.clearApiUrl=function(){
   if(!confirm('Disconnect the Google Sheets database?'))return;

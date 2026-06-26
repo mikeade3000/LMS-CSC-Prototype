@@ -795,3 +795,9 @@ img{max-width:100%;user-select:none;}
   .stage-card{flex-direction:column;}
   .stage-actions{align-items:stretch;width:100%;}
 }
+
+/* Setup steps in admin banner */
+.setup-steps{text-align:left;max-width:560px;margin:0 auto 20px;display:flex;flex-direction:column;gap:10px;}
+.setup-step{display:flex;align-items:flex-start;gap:12px;font-size:.88rem;color:var(--text-light);padding:10px 14px;background:var(--grey-1);border-radius:8px;}
+.setup-step .step-n{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;}
+.setup-step code{background:#fff;padding:1px 6px;border-radius:4px;font-size:.82rem;color:var(--green-dark);}
