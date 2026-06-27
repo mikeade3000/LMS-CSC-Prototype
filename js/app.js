@@ -240,20 +240,48 @@ function safeRender(fn){
 }
 
 function guard(fn,adminOnly=false){
-  const u=Auth.current();
-  if(!u){location.hash='#/login';return;}
+  let u;
+  try{u=Auth.current();}catch(e){console.error('[CSC-LMS] session read failed',e);Auth.clearSession();location.hash='#/login';return;}
+  if(!u){location.hash='#/login';if(getHash()==='/login')safeRender(renderLogin);return;}
   if(adminOnly&&u.role!=='admin'){location.hash='#/dashboard';return;}
-  try{fn();}catch(e){console.error('[CSC-LMS]',e);}
+  try{
+    fn();
+  }catch(e){
+    console.error('[CSC-LMS] render failed',e);
+    // Never leave the user stuck on the loading screen — show a recovery view
+    app().innerHTML=`<div class="auth-page"><div class="auth-card">
+      <div class="auth-header-band"></div>
+      <div class="auth-body" style="text-align:center;padding:40px 24px">
+        <div style="font-size:2.5rem;margin-bottom:12px">⚠️</div>
+        <h2 style="color:var(--red,#c0392b);margin-bottom:8px">Could not load this page</h2>
+        <p style="color:#4a5568;font-size:.9rem;margin-bottom:20px">${(e&&e.message)||'An unexpected error occurred while loading your dashboard.'}</p>
+        <button class="btn-primary" style="margin-right:8px" onclick="location.hash='#/dashboard';location.reload()">↻ Retry</button>
+        <button class="btn-outline" onclick="window.Auth.logout()">Sign Out</button>
+      </div></div></div>`;
+  }
 }
 
 const getHash=()=>location.hash.replace('#','').split('?')[0]||'/';
 const getParams=()=>{const p={};(location.hash.split('?')[1]||'').split('&').forEach(x=>{const[k,v]=x.split('=');if(k)p[k]=decodeURIComponent(v||'');});return p;};
 
 function router(){
-  const h=getHash();
-  const fn=routes[h];
-  if(fn)fn();else guard(renderDashboard);
-  updateNavStatus();
+  try{
+    const u=Auth.current();
+    const h=getHash();
+    // If not logged in and not heading to a public page, force login
+    if(!u && h!=='/login' && h!=='/register'){
+      if(location.hash!=='#/login')location.hash='#/login';
+      safeRender(renderLogin);
+      return;
+    }
+    const fn=routes[h];
+    if(fn)fn();else guard(renderDashboard);
+    updateNavStatus();
+  }catch(e){
+    console.error('[CSC-LMS] router failed',e);
+    // Absolute last resort: never leave a blank/loading screen
+    safeRender(renderLogin);
+  }
 }
 window.addEventListener('hashchange',()=>{TTS.stop();router();});
 
@@ -437,6 +465,9 @@ window.doRegister=async function(){
 // ── Dashboard ─────────────────────────────────────────────────────────────────
 function renderDashboard(){
   const u=Auth.current();
+  if(!u){location.hash='#/login';return;}
+  // Admins don't have a learning dashboard — send them to the admin panel
+  if(u.role==='admin'){location.hash='#/admin';renderAdmin();return;}
   const glKey=GL_MAP[u.gl];
   const course=LMS_CONTENT[glKey];
   if(!course){renderShell(`<div class="error-box">⚠️ No course found for ${esc(u.gl)}. Please contact the administrator.</div>`);return;}

@@ -37,6 +37,27 @@
       <p style="font-size:1rem;opacity:.8;font-family:sans-serif;">Loading CSC LMS v3…</p>
     </div>
   </div>
+  <script>
+    // Safety net: if a script error stops the app from loading, show a message
+    // instead of an infinite loading splash.
+    window.addEventListener('error', function(ev){
+      var appEl = document.getElementById('app');
+      if (appEl && appEl.innerHTML.indexOf('Loading CSC LMS') !== -1) {
+        appEl.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;'+
+          'justify-content:center;background:linear-gradient(135deg,#0d4a2a,#1a6b3c);'+
+          'color:#fff;flex-direction:column;gap:14px;text-align:center;padding:24px;'+
+          'font-family:sans-serif;">'+
+          '<div style="font-size:2.5rem;">⚠️</div>'+
+          '<h2 style="margin:0;">Unable to load the LMS</h2>'+
+          '<p style="opacity:.85;max-width:420px;">A loading error occurred. Please refresh the page. '+
+          'If the problem persists, clear your browser cache and try again.</p>'+
+          '<button onclick="location.reload()" style="margin-top:8px;padding:10px 24px;'+
+          'background:#c9922a;color:#fff;border:none;border-radius:8px;font-size:.9rem;'+
+          'font-weight:600;cursor:pointer;">↻ Refresh Page</button>'+
+          '</div>';
+      }
+    });
+  </script>
   <script src="js/content.js"></script>
   <script src="js/app.js"></script>
 </body>

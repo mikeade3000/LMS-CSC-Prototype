@@ -610,10 +610,7 @@ const LMS_CONTENT = {
         }
       }
     }
-  }
-};
-
-  ,
+  },
   GL06: {
     title: "Grade Level 06",
     subtitle: "Assistant Executive Officer",
